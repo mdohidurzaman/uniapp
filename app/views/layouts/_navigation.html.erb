@@ -1,0 +1,65 @@
+<header>
+  <ul id="dropdown1" class="dropdown-content">
+    <li><%= session_link %></li>
+    <li class="divider"></li>
+    <% if logged_in? %>
+    <li><%= link_to 'Profile', student_path(current_user) %></li>
+    <% end %>
+    <li class="divider"></li>
+    <% if !logged_in? %>
+    <li><%= link_to 'Sign up', signup_path %></li>
+    <% end %>
+  </ul>
+  <ul id="dropdown2" class="dropdown-content">
+    <li><%= session_link %></li>
+    <li class="divider"></li>
+    <% if logged_in? %>
+    <li><%= link_to 'Profile', student_path(current_user) %></li>
+    <% end %>
+    <li class="divider"></li>
+    <% if !logged_in? %>
+    <li><%= link_to 'Sign up', signup_path %></li>
+    <% end %>
+  </ul>
+  <nav>
+  <div class="container">
+    <div class="nav-wrapper">
+      <%= link_to "Tech University", root_path, class: "brand-logo" %>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if logged_in? && current_user.admin? %>
+        <li><%= link_to 'New Course', new_course_path %> </li>
+        <% end %>
+        <li><%= link_to 'Courses', root_path %> </li>
+        <% if logged_in? %>
+        <li><%= link_to "Enrollment", students_path %></li>
+        <% end %>
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+    <ul class="sidenav" id="mobile-demo">
+    <% if logged_in? && current_user.admin? %>
+     <li><%= link_to 'New Course', new_course_path %> </li>
+    <% end %>
+    <li><%= link_to 'Courses', root_path %> </li>
+    <% if logged_in? %>
+     <li><%= link_to "Enrollment", students_path %> </li>
+    <% end %>
+    <li><a class="dropdown-trigger" href="#!" data-target="dropdown2">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+  </ul>
+  <% flash.each do |key, message| %>
+  <div class="container">
+    <div class="row sign-up-form">
+        <div class="col m12">
+            <div class="card-panel red lighten-2" id= "fade-out-target">
+                <span class="white-text">
+                   <%= message %> 
+                  </span>
+                </div>
+            </div>
+        </div>
+    </div>
+  <% end %>
+</header>

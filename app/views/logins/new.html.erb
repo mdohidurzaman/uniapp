@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row sign-up-form">
+        <div class="col m12">
+            <div class="card-panel">
+              <div class="card-title">
+               <h3 class="teal-text center">Log in</h3>  
+              </div>
+               <div class="row">
+                <%= form_for(:logins, html: { class: 'col m12' }) do | f | %>
+                    <div class="row">
+                     <div class="input-field col m12">
+                        <%= f.email_field :email, placeholder: 'Enter your email address', autofocus: true %>
+                        <%= f.label :email, class: "active" %>
+                     </div>
+                 </div>
+                 <div class="row">
+                     <div class="input-field col m12">
+                        <%= f.password_field :password, placeholder: 'Enter your password', autofocus: true %>
+                        <%= f.label :password, class: "active" %>
+                     </div>
+                 </div>
+                  <div class="row">
+                    <div class="input-field col m12">               
+                     <%= f.button '<i class="material-icons right">send</i>log in'.html_safe, 
+                                     class: "btn waves-effect waves-light right white-text" %>
+                   </div>  
+                 </div>
+                <% end %>
+            </div>  
+          </div>
+        </div>
+    </div>
+</div>

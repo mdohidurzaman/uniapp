@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col s12 m12 l12">
+      <div class="show-course">
+          <h3 class="course-title"><%= @course.short_name %> : <%= @course.name %></h3>
+          <p><%= @course.description %> </p>
+        </div>
+      
+      <div class="course-action">
+        <%= link_to 'All courses', root_path, class:"waves-effect waves-light btn amber darken-4" %>
+        <% if logged_in? && current_user.admin? %>
+        <%= link_to 'Edit courses', edit_course_path(@course), class:"waves-effect waves-light btn amber" %>
+        <%= link_to 'Delete', course_path(@course), method: :delete, 
+               data: { confirm: 'Are you sure?' }, class:"waves-effect waves-light btn red darken-2" %>
+        <% end %>
+      </div>
+  </div>
+</div>
